@@ -1,0 +1,62 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "noImplicitAny": false,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "preserveSymlinks": true,
+    "typeRoots": [
+      "../../node_modules",
+      "../../node_modules/@rancher/shell/types"
+    ],    
+    "types": [
+      "node",
+      "webpack-env",
+      "@types/node",
+      "@types/jest",
+      "@types/lodash",
+      "rancher",
+      "shell"
+    ],
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ],
+    "paths": {
+      "@shell/*.vue": [
+        "./types/vue-sfc.d.ts"
+      ],
+      "@components/*.vue": [
+        "./types/vue-sfc.d.ts"
+      ],
+      "@shell/*": [
+        "../../node_modules/@rancher/shell/*"
+      ],
+      "@components/*": [
+        "@rancher/components/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.d.ts",
+    "**/*.tsx",
+    "**/*.vue",
+    "../../node_modules/@rancher/shell/types/global-vue.d.ts"
+  ],
+  "exclude": [
+    "../../node_modules"
+  ]
+}

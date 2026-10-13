@@ -1,0 +1,140 @@
+---
+capt:
+  description: 通过 Cluster API Provider Tencent (CAPT) 创建腾讯云 TKE 集群。
+  label: CAPI TKE
+  hostedNav:
+    label: Hosted CAPI 集群
+    create: 创建 CAPI TKE 集群
+    columns:
+      phase: 阶段
+      endpoint: 控制面地址
+  region:
+    label: 地域
+  regions:
+    ap-guangzhou: 广州
+    ap-shanghai: 上海
+    ap-beijing: 北京
+    ap-chengdu: 成都
+    ap-chongqing: 重庆
+    ap-nanjing: 南京
+    ap-hongkong: 中国香港
+    ap-singapore: 新加坡
+    na-toronto: 多伦多
+    ap-bangkok: 曼谷
+    ap-mumbai: 孟买
+    ap-seoul: 首尔
+    ap-tokyo: 东京
+    na-siliconvalley: 硅谷
+    na-ashburn: 弗吉尼亚
+    eu-frankfurt: 法兰克福
+    eu-moscow: 莫斯科
+    ap-jakarta: 雅加达
+    sa-saopaulo: 圣保罗
+  tkeCluster:
+    name:
+      label: TKE 集群名称
+      placeholder: 默认使用 Rancher 集群名称
+  version:
+    label: Kubernetes 版本
+  vpc:
+    label: VPC
+  clusterCidr:
+    label: 容器网络 CIDR
+    tooltip: 不能与所选 VPC 的 CIDR 冲突。会写入 Cluster.spec.clusterNetwork.pods.cidrBlocks。
+  subnet:
+    label: 子网
+    placeholder: 请选择一个或多个子网
+  securityGroup:
+    label: 安全组
+    placeholder: 请选择一个或多个安全组
+  os:
+    label: 操作系统
+  image:
+    label: 镜像
+  keyPair:
+    label: 密钥对
+    placeholder: 可选密钥对
+  proxy:
+    label: 访问集群 APIServer
+    inner: 内网访问
+    outer: 外网访问
+    info: 外网访问需要选择安全组，内网访问需要选择所选 VPC 下的子网。
+  basicConfig:
+    title: 集群基础配置
+    description: 配置 Cluster API Provider Tencent 使用的 TKECluster 资源，包括地域和 Kubernetes 版本。操作系统在节点池里选择。
+  networkConfig:
+    title: 网络基础配置
+    description: 配置 VPC 和 APIServer 访问方式。这些字段对应 TKECluster.spec.vpcID 和 TKECluster.spec.endpointAccess。
+  nodePool:
+    basic:
+      title: 节点池配置
+      hint: 节点池创建后，只会更新最小节点数、最大节点数、期望节点数和实例规格。操作系统、子网、安全组、密钥对只在创建时生效。
+    network:
+      title: 网络配置
+    minSize:
+      label: 最小节点数
+    maxSize:
+      label: 最大节点数
+    replicas:
+      label: 期望节点数
+  instanceType:
+    label: 实例规格
+    selected:
+      title: 已选实例规格
+    table:
+      title: 实例规格
+      subtitle: 选择一个实例规格，可按 CPU 和内存筛选。可参考
+      linkText: TKE 支持矩阵
+      columns:
+        instanceSpec: 机型
+        instanceType: 规格
+        instanceFamily: 系列
+        vcpus: CPU
+        memory: 内存
+        zone: 可用区
+    cpu:
+      label: 按 CPU 筛选
+    memory:
+      label: 按内存筛选
+    familyCategory:
+      standard: 标准型
+      premium: 尊享型
+      compute: 计算型
+      highio: 高 I/O 型
+      memory: 内存型
+      highPerformance: 高性能型
+      gpu: GPU
+      bigData: 大数据型
+      bareMetal: 裸金属
+      beeFast: 蜂驰型
+      other: 其他
+  errors:
+    creatingInfrastructureClusterConfig: "创建基础设施集群配置失败：{error}"
+    savingMachineConfig: "保存机器配置失败：{error}"
+    savingInfrastructureCluster: "保存基础设施集群失败：{error}"
+    savingCapiCluster: "保存 CAPI Cluster 失败：{error}"
+    savingCapiMachinePool: "保存 CAPI MachinePool 失败：{error}"
+    regionRequired: 地域不能为空。
+    vpcRequired: VPC 不能为空。
+    clusterVersionRequired: Kubernetes 版本不能为空。
+    clusterNameRequired: TKE 集群名称不能为空。
+    instanceTypeRequired: 实例规格不能为空。
+    osNameRequired: 节点池镜像不能为空。
+    securityGroupRequired: 安全组不能为空。
+    subnetRequired: 子网不能为空。
+    minSizeRequired: 最小节点数不能为空。
+    maxSizeRequired: 最大节点数不能为空。
+    minSizeInvalid: 最小节点数必须大于或等于 0。
+    maxSizeInvalid: 最大节点数必须大于或等于 1。
+    minSizeGreaterThanMax: 最小节点数不能大于最大节点数。
+    maxSizeLessThanMin: 最大节点数不能小于最小节点数。
+    replicasRequired: 期望节点数不能为空。
+    replicasInvalid: 期望节点数必须是大于或等于 0 的整数。
+    replicasLessThanMin: 期望节点数不能小于最小节点数。
+    replicasGreaterThanMax: 期望节点数不能大于最大节点数。
+
+cluster:
+  provider:
+    tkemanagedmachinepool: CAPI TKE
+  providerGroup:
+    create-capi: Cluster API

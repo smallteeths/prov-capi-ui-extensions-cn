@@ -1,0 +1,140 @@
+---
+capt:
+  description: Provision new CAPT (Cluster API Provider Tencent) TKE clusters.
+  label: CAPI TKE
+  hostedNav:
+    label: Hosted CAPI Clusters
+    create: Create CAPI TKE Cluster
+    columns:
+      phase: Phase
+      endpoint: Control Plane Endpoint
+  region:
+    label: Region
+  regions:
+    ap-guangzhou: Guangzhou
+    ap-shanghai: Shanghai
+    ap-beijing: Beijing
+    ap-chengdu: Chengdu
+    ap-chongqing: Chongqing
+    ap-nanjing: Nanjing
+    ap-hongkong: Hong Kong
+    ap-singapore: Singapore
+    na-toronto: Toronto
+    ap-bangkok: Bangkok
+    ap-mumbai: Mumbai
+    ap-seoul: Seoul
+    ap-tokyo: Tokyo
+    na-siliconvalley: Silicon Valley
+    na-ashburn: Virginia
+    eu-frankfurt: Frankfurt
+    eu-moscow: Moscow
+    ap-jakarta: Jakarta
+    sa-saopaulo: Sao Paulo
+  tkeCluster:
+    name:
+      label: TKE Cluster Name
+      placeholder: Defaults to the Rancher cluster name
+  version:
+    label: Kubernetes Version
+  vpc:
+    label: VPC
+  clusterCidr:
+    label: Container Network CIDR
+    tooltip: Must not overlap the selected VPC CIDR. Written to Cluster.spec.clusterNetwork.pods.cidrBlocks.
+  subnet:
+    label: Subnet
+    placeholder: Select one or more subnets
+  securityGroup:
+    label: Security Group
+    placeholder: Select one or more security groups
+  os:
+    label: Operating System
+  image:
+    label: Image
+  keyPair:
+    label: Key Pair
+    placeholder: Optional key pair
+  proxy:
+    label: Access cluster APIServer
+    inner: Inner Net
+    outer: Outer Net
+    info: Public access uses a security group. Private access uses a subnet in the selected VPC.
+  basicConfig:
+    title: Cluster Basic Configuration
+    description: Configure the TKECluster resource used by Cluster API Provider Tencent, including region and Kubernetes version. Choose the OS on the node pool.
+  networkConfig:
+    title: Network Basic Configuration
+    description: Configure the VPC and APIServer access method. These fields map to TKECluster.spec.vpcID and TKECluster.spec.endpointAccess.
+  nodePool:
+    basic:
+      title: Node Pool Configuration
+      hint: After the node pool exists, only minimum size, maximum size, desired nodes, and instance type are applied. OS, subnets, security groups, and key pair are used at creation.
+    network:
+      title: Network Configuration
+    minSize:
+      label: Minimum Size
+    maxSize:
+      label: Maximum Size
+    replicas:
+      label: Desired Nodes
+  instanceType:
+    label: Instance Type
+    selected:
+      title: Selected Instance Type
+    table:
+      title: Instance Type
+      subtitle: Select one instance type and optionally filter by CPU and memory. You can refer to the
+      linkText: TKE support matrix
+      columns:
+        instanceSpec: Model
+        instanceType: Specification
+        instanceFamily: Family
+        vcpus: CPU
+        memory: Memory
+        zone: Zone
+    cpu:
+      label: Filter by CPU
+    memory:
+      label: Filter by Memory
+    familyCategory:
+      standard: Standard
+      premium: Premium
+      compute: Compute
+      highio: High I/O
+      memory: Memory
+      highPerformance: High Performance
+      gpu: GPU
+      bigData: Big Data
+      bareMetal: Bare Metal
+      beeFast: BeeFast
+      other: Other
+  errors:
+    creatingInfrastructureClusterConfig: "Error creating infrastructure cluster config: {error}"
+    savingMachineConfig: "Error saving machine config: {error}"
+    savingInfrastructureCluster: "Error saving infrastructure cluster: {error}"
+    savingCapiCluster: "Error saving CAPI Cluster: {error}"
+    savingCapiMachinePool: "Error saving CAPI MachinePool: {error}"
+    regionRequired: Region is required.
+    vpcRequired: VPC is required.
+    clusterVersionRequired: Kubernetes version is required.
+    clusterNameRequired: TKE cluster name is required.
+    instanceTypeRequired: Instance type is required.
+    osNameRequired: Node pool image is required.
+    securityGroupRequired: Security group is required.
+    subnetRequired: Subnet is required.
+    minSizeRequired: Minimum size is required.
+    maxSizeRequired: Maximum size is required.
+    minSizeInvalid: Minimum size must be 0 or greater.
+    maxSizeInvalid: Maximum size must be 1 or greater.
+    minSizeGreaterThanMax: Minimum size cannot be greater than maximum size.
+    maxSizeLessThanMin: Maximum size cannot be less than minimum size.
+    replicasRequired: Desired node count is required.
+    replicasInvalid: Desired node count must be a whole number, 0 or greater.
+    replicasLessThanMin: Desired node count cannot be less than the minimum size.
+    replicasGreaterThanMax: Desired node count cannot be greater than the maximum size.
+
+cluster:
+  provider:
+    tkemanagedmachinepool: CAPI TKE
+  providerGroup:
+    create-capi: Cluster API

@@ -1,0 +1,30 @@
+{
+  "name": "prov-capi-ui-extensions-cn",
+  "version": "0.0.1",
+  "private": false,
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "@rancher/shell": "v3.0.13",
+    "ipaddr.js": "2.5.0"
+  },
+  "devDependencies": {
+    "eslint-plugin-node":    "11.1.0",
+    "eslint-plugin-promise": "7.3.0"
+  },
+  "resolutions": {
+    "@types/node": "~25.3.0",
+    "@types/lodash": "4.17.25"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=dev ./node_modules/.bin/vue-cli-service serve",
+    "build": "./node_modules/.bin/vue-cli-service build",
+    "clean": "./node_modules/@rancher/shell/scripts/clean",
+    "build-pkg": "./node_modules/@rancher/shell/scripts/build-pkg.sh",
+    "serve-pkgs": "./node_modules/@rancher/shell/scripts/serve-pkgs",
+    "publish-pkgs": "./node_modules/@rancher/shell/scripts/extension/publish",
+    "parse-tag-name": "./node_modules/@rancher/shell/scripts/extension/parse-tag-name",
+    "lint": "./node_modules/.bin/eslint pkg/${PKG:-capt}"
+  }
+}
